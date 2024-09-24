@@ -1,0 +1,107 @@
+Please read the following instructions before executing the codes
+
+Quick Start:
+1. All models for our paper have been put in './model'.
+2. Run the following command to test QPAN models.
+	
+	Full precision PAN+ 3R model trained on CS ratio 1, performance on Set11
+	python Test_images.py --cs_ratio 1 --bits fp --test_name Set11
+	
+	1-bit Q-PAN+ 3R model trained on CS ratio 10, performance on BSD68
+	python Test_images.py --cs_ratio 10 --bits 1 --test_name BSD68
+	
+	Full precision MRI PAN+ 3R model trained on CS ratio 20
+	python MRI_Test_images.py --cs_ratio 20
+
+
+3. Find the result images in the './result' folder.
+
+Due to the cap on the file size for supplementary material submission, we have provided only full-precision and 1-bit quantized PAN+ (3R) models, trained on natural images and full-precision models trained on brain MR images with this zip file. The complete set of trained models can be found in the downloads link shared below.
+
+
+Downloads:
+Please download the training data - https://drive.google.com/file/d/1E8rn6qurCMZO4spZpQXYGIPgKTMF0787/view?usp=sharing
+
+Please download the trained models for testing purpose - https://drive.google.com/file/d/1Wcvp1nGzcvCIW92jCz_JhELWRXt9qXlr/view?usp=sharing
+
+
+Complete Test Setup:
+1. Please download the trained models (link given in the Downloads section above) to test the complete setup
+2. Run the following command to test QPAN / Q-ISTA-Net models.
+
+natural image reconstruction:
+
+	Full precision PAN+ 3R model trained on CS ratio 1, performance on Set11
+	python Test_images.py --cs_ratio 1 --bits fp --test_name Set11
+	
+	Full precision PAN+ 2R model trained on CS ratio 1, performance on BSD68
+	python Test_images.py --cs_ratio 1 --bits fp --test_name Set11 --model_type 2R
+	
+	2-bit ISTA-Net+ model trained on CS ratio 10, performance on BSD68
+	python Test_images.py --cs_ratio 10 --bits 2 --test_name BSD68 --model_type 1R
+	
+	3-bit ISTA-Net model trained on CS ratio 4, performance on Set11
+	python Test_images.py --cs_ratio 4 --bits 3 --model_type 1R --isPlus Flase
+	
+	1-bit Q-PAN 2R model trained on CS ratio 1, performance on Set11
+	python Test_images.py --cs_ratio 1 --bits 1 --model_type 2R --isPlus Flase
+
+MR image reconstruction:	
+
+	Full precision PAN+ 3R model trained on CS ratio 20
+	python MRI_Test_images.py --cs_ratio 20 --bits fp 
+	
+	Full precision PAN+ 2R model trained on CS ratio 50
+	python MRI_Test_images.py --cs_ratio 50 --bits fp --model_type 2R
+	
+	2-bit ISTA-Net+ model trained on CS ratio 50
+	python MRI_Test_images.py --cs_ratio 50 --bits 2 --model_type 1R
+	
+	3-bit ISTA-Net model trained on CS ratio 40
+	python MRI_Test_images.py --cs_ratio 40 --bits 3 --model_type 1R --isPlus Flase
+	
+	1-bit Q-PAN 2R model trained on CS ratio 30
+	python MRI_Test_images.py --cs_ratio 30 --bits 1 --model_type 2R --isPlus Flase
+
+3. Find the result images in the './result' folder.
+
+Complete Training Setup:
+
+1. Please download the training data [Training_Data.mat, Training_BrainImages_256x256_100.mat] (link given in the Downloads section above).
+2. Place Training_Data.mat, Training_BrainImages_256x256_100.mat in the './data' folder.
+2. Run the following command to train QPAN / Q-ISTA-Net models.
+	
+	Train 9 layered full-precision QPAN 3R models on natural images with CS ratio 4
+	python Train_QPAN_3R.py --cs_ratio 4 --layer_num 9 --bits fp
+	
+	Train 9 layered full-precision QPAN+ 3R models on natural images with CS ratio 1
+	python Train_QPAN_plus_3R.py --cs_ratio 1 --layer_num 9 --bits fp
+	
+	Train 11 layered 1-bit QPAN 2R models on MR images with CS ratio 20
+	python Train_MRI_QPAN_2R.py --cs_ratio 20 --layer_num 11 --bits 1 --batch_size 2
+	
+	Train 11 layered 3-bit QPAN+ 3R models on MR images with CS ratio 50
+	python Train_MRI_QPAN_plus_3R.py --cs_ratio 50 --layer_num 11 --bits 3 --batch_size 2
+
+3. The trained models can be found in the './model' folder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
